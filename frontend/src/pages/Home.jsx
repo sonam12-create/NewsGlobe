@@ -18,7 +18,7 @@ function Home() {
       
 
       const filteredNews = getNews.data.articles;
-      const final = filteredNews.filter((item) => item.image !== null);
+      const final = (filteredNews || []).filter((item) => item.image !== null);
     
       setNews(final);
       console.log(final)
