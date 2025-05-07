@@ -13,12 +13,12 @@ function Home() {
   const fetchNews = async () => {
     try {
       const getNews = await axios.get(
-        `https://newsapi.org/v2/everything?q=${query}&apiKey=6041f39ba9f04857a60574dcacb1977f`
+        `${import.meta.env.VITE_URL}${query}&lang=en&apikey=${import.meta.env.VITE_API_KEY}`
       );
-      // console.log(getNews.data);
+      console.log(getNews.data);
 
       const filteredNews = getNews.data.articles;
-      const final = filteredNews.filter((item) => item.urlToImage !== null);
+      const final = filteredNews.filter((item) => item.image !== null);
 
       setNews(final);
     } catch (error) {
@@ -40,7 +40,7 @@ function Home() {
           title={item.title}
           description={item.description}
           url={item.url}
-          urlToImage={item.urlToImage}
+          urlToImage={item.image}
           publishedAt={item.publishedAt}
           source={item.source.name}
         />
