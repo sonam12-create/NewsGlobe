@@ -15,17 +15,17 @@ function Home() {
       const getNews = await axios.get(
         `${import.meta.env.VITE_URL}${query}&lang=en&apikey=${import.meta.env.VITE_API_KEY}`
       );
-      console.log(getNews.data);
+      
 
-      const final = getNews.data.articles;
-      // const final = filteredNews.filter((item) => item.image !== null);
-      // console.log(filteredNews)
+      const filteredNews = getNews.data.articles;
+      const final = filteredNews.filter((item) => item.image !== null);
+    
       setNews(final);
       console.log(final)
     } catch (error) {
       console.log(error);
     }
-    // console.log(news)
+ 
   };
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function Home() {
           url={item.url}
           urlToImage={item.image}
           publishedAt={item.publishedAt}
-          source={item.source.name}
+          source={item.source?.name}
         />
       ))}
     </div>
