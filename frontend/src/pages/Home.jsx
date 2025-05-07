@@ -17,10 +17,11 @@ function Home() {
       );
       console.log(getNews.data);
 
-      const filteredNews = getNews.data.articles;
-      const final = filteredNews.filter((item) => item.image !== null);
-
+      const final = getNews.data.articles;
+      // const final = filteredNews.filter((item) => item.image !== null);
+      // console.log(filteredNews)
       setNews(final);
+      console.log(final)
     } catch (error) {
       console.log(error);
     }
